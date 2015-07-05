@@ -25,7 +25,9 @@ def trace_cb(frame, event, arg):
         return
     caller_line_no = caller.f_lineno
     caller_filename = caller.f_code.co_filename
-    print '%(caller_filename)s:%(caller_line_no)s ==> %(func_name)s:%(func_line_no)s (%(func_filename)s) with %(args)r' % locals()
+    print ('%(caller_filename)s:%(caller_line_no)s '
+           '==> %(func_name)s:%(func_line_no)s (%(func_filename)s) '
+           'with %(args)r' % locals())
 
 
 if __name__ == '__main__':
