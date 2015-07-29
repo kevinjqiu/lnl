@@ -9,14 +9,18 @@ def factorial(n):
 
 def trace_stack(frame, event, arg):
     co = frame.f_code
+
     func_name = co.co_name
 
     if event == 'call':
         func_line_no = frame.f_lineno
+
         func_filename = co.co_filename
+
         args = frame.f_locals
 
         caller = frame.f_back
+
         if not caller:
             pass
 
