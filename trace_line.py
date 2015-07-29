@@ -25,8 +25,6 @@ def trace_calls(frame, event, arg):
 
     co = frame.f_code
     func_name = co.co_name
-    if func_name == 'write':
-        return
 
     func_line_no = frame.f_lineno
     func_filename = co.co_filename
