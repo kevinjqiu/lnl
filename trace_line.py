@@ -21,7 +21,7 @@ def trace_lines(frame, event, arg):
 
 def trace_calls(frame, event, arg):
     if event != 'call':
-        return
+        pass
 
     co = frame.f_code
     func_name = co.co_name
@@ -32,9 +32,12 @@ def trace_calls(frame, event, arg):
 
     caller = frame.f_back
     if not caller:
-        return
+        pass
+
     caller_line_no = caller.f_lineno
+
     caller_filename = caller.f_code.co_filename
+
     print ('%(caller_filename)s:%(caller_line_no)s '
            '==> %(func_name)s:%(func_line_no)s (%(func_filename)s) '
            'with %(args)r' % locals())

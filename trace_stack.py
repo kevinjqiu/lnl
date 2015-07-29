@@ -18,14 +18,20 @@ def trace_stack(frame, event, arg):
 
         caller = frame.f_back
         if not caller:
-            return
+            pass
+
         caller_line_no = caller.f_lineno
+
         caller_filename = caller.f_code.co_filename
+
         print ('%(caller_filename)s:%(caller_line_no)s '
                '==> %(func_name)s:%(func_line_no)s (%(func_filename)s) '
                'with %(args)r' % locals())
+
         return trace_stack
+
     elif event == 'return':
+
         print '%s => %s' % (func_name, arg)
 
 
