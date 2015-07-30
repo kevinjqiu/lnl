@@ -35,7 +35,6 @@ def trace_stack(frame, event, arg):
         return trace_stack
 
     elif event == 'return':
-
         print '%s => %s' % (func_name, arg)
 
 
