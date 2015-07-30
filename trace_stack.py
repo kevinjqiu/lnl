@@ -12,7 +12,8 @@ def trace_stack(frame, event, arg):
 
     if event == 'call':
         caller = frame.f_back
-        if not caller:
+        if not caller:  # stop if we're the top frame
+
             return
 
         print ('%(caller_filename)s:%(caller_line_no)s ==> %(func_name)s:%(func_line_no)s (%(func_filename)s) '
@@ -25,6 +26,7 @@ def trace_stack(frame, event, arg):
                    args=frame.f_locals))
 
         return trace_stack
+
     elif event == 'return':
         print '%s => %s' % (code_object.co_name, arg)
 

@@ -28,7 +28,8 @@ def trace_calls(frame, event, arg):
 
     caller = frame.f_back
 
-    if not caller:
+    if not caller:  # stop if we're are the top frame
+
         return
 
     print ('%(caller_filename)s:%(caller_line_no)s ==> %(func_name)s:%(func_line_no)s (%(func_filename)s) '
@@ -43,7 +44,7 @@ def trace_calls(frame, event, arg):
 
     print
 
-    return trace_lines
+    return trace_lines  # trace functions can be chained
 
 
 if __name__ == '__main__':
