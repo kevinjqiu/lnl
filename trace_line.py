@@ -8,46 +8,40 @@ def factorial(n):
 
 
 def trace_lines(frame, event, arg):
-    if event != 'line':
+    if event != 'line':  # only interested in "line" events
         return
 
-    co = frame.f_code
+    code_object = frame.f_code
 
-    func_name = co.co_name
-
-    line_no = frame.f_lineno
-
-    filename = co.co_filename
-
-    print '%s:%s %s' % (func_name, line_no, filename)
+    print '%(func_name)s:%(line_no)s %(filename)s' % dict(
+        func_name=code_object.co_name,
+        line_no=frame.f_lineno,
+        filename=code_object.co_filename)
 
 
 def trace_calls(frame, event, arg):
-    if event != 'call':
-        pass
+    if event != 'call':  # only interested in "call" events
 
-    co = frame.f_code
+        return
 
-    func_name = co.co_name
-
-    func_line_no = frame.f_lineno
-
-    func_filename = co.co_filename
-
-    args = frame.f_locals
+    code_object = frame.f_code
 
     caller = frame.f_back
 
     if not caller:
-        pass
+        return
 
-    caller_line_no = caller.f_lineno
+    print ('%(caller_filename)s:%(caller_line_no)s ==> %(func_name)s:%(func_line_no)s (%(func_filename)s) '
+           'with %(args)r' % dict(
+               caller_filename=caller.f_code.co_filename,
+               caller_line_no=caller.f_lineno,
+               func_name=code_object.co_name,
+               func_line_no=frame.f_lineno,
+               func_filename=code_object.co_filename,
+               args=frame.f_locals,
+           ))
 
-    caller_filename = caller.f_code.co_filename
-
-    print ('%(caller_filename)s:%(caller_line_no)s '
-           '==> %(func_name)s:%(func_line_no)s (%(func_filename)s) '
-           'with %(args)r' % locals())
+    print
 
     return trace_lines
 
