@@ -8,8 +8,7 @@ def factorial(n):
 
 
 def trace_stack(frame, event, arg):
-    co = frame.f_code
-
+    co = frame.f_code  # code object
     func_name = co.co_name
 
     if event == 'call':
@@ -20,9 +19,8 @@ def trace_stack(frame, event, arg):
         args = frame.f_locals
 
         caller = frame.f_back
-
         if not caller:
-            pass
+            return
 
         caller_line_no = caller.f_lineno
 
@@ -33,7 +31,6 @@ def trace_stack(frame, event, arg):
                'with %(args)r' % locals())
 
         return trace_stack
-
     elif event == 'return':
         print '%s => %s' % (func_name, arg)
 
