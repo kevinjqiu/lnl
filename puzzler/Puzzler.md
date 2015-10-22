@@ -11,7 +11,7 @@ In [2]: a
 Out[2]: {5: ({...}, 5)}
 
 In [3]: b
-Out[3]: 5
+Out[4]: 5
 # }}}
 
 # {{{ The byte code
@@ -37,19 +37,18 @@ Out[3]: 5
 
 ```
     +---------------+
-    |  value stack  |
+    |  value stack  |  (to be manipulated by the opcodes)
     +---------------+
-    |   object 1    |
-    |   object 2    |
-    +---------------+
-
-
-    +----------------+
-    |  name bindings |
-    +----------------+
-    |    a :  {}     |
-    |    b :  '5'    |
-    +----------------+
+    |      .        |-------+
+    |      .        |-------|------------+
+    +---------------+       |            |
+                            v            v
+    +--------------+     object1      object2
+    | local frame  |        ^            ^
+    +--------------+        |            |
+    |      a       |--------+            |
+    |      b       |---------------------+
+    +--------------+
 ```
 
 # }}}
@@ -164,6 +163,9 @@ Out[3]: 5
     |   ({}, 5)     |
     +---------------+
 ```
+Increments the reference of the tuple (the tuple is a new object)
+**but the values inside the tuple are still pointing to the same objects.**
+
 # }}}
 
 # {{{ `UNPACK_SEQUENCE 2` (line 2450)
