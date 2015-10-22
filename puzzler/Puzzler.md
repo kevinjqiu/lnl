@@ -44,15 +44,17 @@ Out[3]: 5
     +---------------+
 
 
-      name bindings
-
-    a --------->  {}
-    b --------->  '5'
+    +----------------+
+    |  name bindings |
+    +----------------+
+    |    a :  {}     |
+    |    b :  '5'    |
+    +----------------+
 ```
 
 # }}}
 
-# {{{ `BUILD_MAP 0`
+# {{{ `BUILD_MAP 0` (line 2498)
 ```
   -> BUILD_MAP                0
      LOAD_CONST               0 (5)
@@ -79,7 +81,7 @@ Out[3]: 5
 ```
 # }}}
 
-# {{{ `LOAD_CONST 0`
+# {{{ `LOAD_CONST 0` (line 1227)
 ```
      BUILD_MAP                0
   -> LOAD_CONST               0 (5)
@@ -195,7 +197,7 @@ Out[3]: 5
 ```
 # }}}
 
-# {{{ `STORE_NAME 0` (line 2450)
+# {{{ `STORE_NAME 0` (line 2168)
 ```
      BUILD_MAP                0
      LOAD_CONST               0 (5)
@@ -230,7 +232,7 @@ Out[3]: 5
 ```
 # }}}
 
-# {{{ `STORE_NAME 1` (line 2450)
+# {{{ `STORE_NAME 1` (line 2168)
 ```
      BUILD_MAP                0
      LOAD_CONST               0 (5)
@@ -340,7 +342,6 @@ Out[3]: 5
     +---------------+
 ```
 # }}}
-
 
 # {{{ `STORE_SUBSCR` (line 1902)
 ```
