@@ -1,3 +1,5 @@
+# vim: set fdm=marker:
+# {{{
 # The Puzzle
 
 So, this lunch and learn is about scratching the surface beneath the Python code and look at what it really does.
@@ -47,3 +49,4 @@ The next thing you need to know about the Python VM is that there are two storag
 # Conclusion
 
 So there you go. We just peeked under the hood of Python and saw how things work together. This barely scratches the surface. The opcodes in this example are quite straightforward, but hopefully through this exercise, you know where to look for CPython opcodes and the internals. 
+# }}}
