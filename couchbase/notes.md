@@ -77,3 +77,18 @@ Querying
 Mobile (offline and sync)
 -------------------------
 Don't want to spend too much time on this
+
+Demo
+----
+1. Run couchbase docker container
+2. Go through setup and show admin interface
+3. Run couchdb docker container
+4. Run order service server
+5. Show `orders/service.py` and `orders/document_manager.py`
+6. Keep couchdb document manager, and run `time ./bench.sh`
+7. Switch to couchbase document manager, and run `time ./bench.sh`
+8. Show the chart in the admin interface
+9. open `document_manager` and change `persist_to` to 1
+10. Run `time ./bench.sh`
+11. Show the chart in the admin interface
+12. Show simple N1QL by searching on `orderType`
