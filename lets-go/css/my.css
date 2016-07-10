@@ -1,0 +1,8 @@
+.active {
+    font-weight: bold;
+}
+
+.inactive {
+    opacity: 0.5;
+}
+

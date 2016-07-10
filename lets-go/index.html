@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>reveal.js - The HTML Presentation Framework</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <link rel="stylesheet" href="css/my.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <div class="slides">
+                <section class="" data-id="2275cdcd5cd663b86177a88aba0037ee">
+                <h1>Let's GO</h1>
+                <div>
+                    <br>
+                </div>
+                <p class="fragment" data-fragment-index="0">Scale Backend Service Development in Go</p>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <br>
+                </div>
+                <footer>
+                    <span>kevin@freshbooks.com</span>
+                </footer>
+                <br>
+                </section>
+
+                <section class="" data-id="2bf3d47be5548eb715da4ac2715aa09f">
+                <h2>Agenda</h2>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Current State of FB backend services</li>
+                        <li class="fragment" data-fragment-index="1">Scalability Challenges</li>
+                        <li class="fragment" data-fragment-index="2">Where Dynamic Languages Fall Short</li>
+                        <li class="fragment" data-fragment-index="3">Go: A New Kind of Static Language</li>
+                        <li class="fragment" data-fragment-index="4">How Go helps us scale</li>
+                        <li class="fragment" data-fragment-index="5">Where to GO from here</li>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="e2a948826469695b05f7d10dc557f53d">
+                <h2>Agenda</h2>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="active">Current State of FB backend services</li>
+                        <li class="inactive">Scalability Challenges</li>
+                        <li class="inactive">Where Dynamic Languages Fall Short</li>
+                        <li class="inactive">Go: A New Kind of Static Language</li>
+                        <li class="inactive">How Go helps us scale</li>
+                        <li class="inactive">Where to GO from here</li>
+                    </ul>
+                </div>
+                </section>
+                <section class="">
+                <h2>Major FB Services</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Platform</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Evolve</td>
+                            <td>Python+Pylons</td>
+                        </tr>
+                        <tr>
+                            <td>MasterLock</td>
+                            <td>Ruby+Rails</td>
+                        </tr>
+                        <tr>
+                            <td>CardApp</td>
+                            <td>Python+Pylons</td>
+                        </tr>
+                        <tr>
+                            <td>Apple Subscription Manager</td>
+                            <td>JavaScript+Node.js</td>
+                        </tr>
+                        <tr>
+                            <td>FreshApp</td>
+                            <td>PHP+Symphony</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </section>
+                <section>
+                    <h2>What Do They Have In Common?</h2>
+                </section>
+                <section class="" data-id="e2a948826469695b05f7d10dc557f53d">
+                <h2>Agenda</h2>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="inactive">Current State of FB backend services</li>
+                        <li class="active">Scalability Challenges</li>
+                        <li class="inactive">Where Dynamic Languages Fall Short</li>
+                        <li class="inactive">Go: A New Kind of Static Language</li>
+                        <li class="inactive">How Go helps us scale</li>
+                        <li class="inactive">Where to GO from here</li>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="d5c0393da9897b5debed36db8361915a">
+                <h2>Performance</h2>
+                <div>
+                    <img height="800px" src="images/evolve_percentile_response_times.png" style="width: 667.3747414979875px; height: 538.5570108523865px; max-height: none; max-width: none;">
+                </div>
+
+                </section>
+                <section class="" data-id="7d7d3dc3a6a51ed1dd27c8231c4fd8f1">
+                <h2>Development</h2>
+                <div>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Larger Code Base</li>
+                        <li class="fragment" data-fragment-index="1">A Lot More Devs</li>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="17992f9698f74daf3a37eca3d32d6e88">
+                <h2>Benefits of Dynamic Languages</h2>
+                <div>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">
+                        <span class="fragment" data-fragment-index="0">More </span>
+                        <span class="fragment" data-fragment-index="1" style="text-align: center;text-decoration:line-through">High Quality </span>
+                        <span class="fragment" data-fragment-index="2" >Products Faster </span>
+                        <span class="fragment" data-fragment-index="3">
+                            <em>Initially</em>
+                        </span>
+                        </li>
+                        <li class="fragment" data-fragment-index="4">
+                        <span class="fragment" data-fragment-index="4">Expressive</span>
+                        <span class="fragment" data-fragment-index="5">, Convenient</span>
+                        <span class="fragment" data-fragment-index="6">, "Fun"</span>&nbsp;</li>
+                    </ul>
+                </div>
+
+                </section>
+                <section class="" data-id="e2a948826469695b05f7d10dc557f53d">
+                <h2>Agenda</h2>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="inactive">Current State of FB backend services</li>
+                        <li class="inactive">Scalability Challenges</li>
+                        <li class="active">Where Dynamic Languages Fall Short</li>
+                        <li class="inactive">Go: A New Kind of Static Language</li>
+                        <li class="inactive">How Go helps us scale</li>
+                        <li class="inactive">Where to GO from here</li>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="c6544b2d572a091a095b17f255e9408f">
+                <h2 style="font-style: normal; font-variant: normal;">Dynamic Language</h2>
+                <div>
+                    <br>
+                </div>
+                <blockquote>The techniques you use to build a hut is not the same technique you use to build a skyscraper</blockquote>
+                <blockquote>- Joshua Bloch</blockquote>
+                <br>
+                </section>
+                <section class="" data-id="e73f0272306caf60c6db942fa1c2aa25">
+                <h2>Dynamic Typing</h2>
+                <div>
+                    <div style="font-size: 30.156816482543945px; font-style: normal; font-variant: normal;">
+                        <ul>
+                            <li class="fragment" data-fragment-index="0">No Type information until runtime</li>
+                            <li class="fragment" data-fragment-index="1">harder to reason about code</li>
+                            <li class="fragment" data-fragment-index="2">hard to optimize</li>
+                            <li class="fragment" data-fragment-index="3">interpreter overhead</li>
+                            <li class="fragment" data-fragment-index="4">GIL</li>
+                        </ul>
+                    </div>
+                </div>
+                </section>
+                <section class="" data-id="e73f0272306caf60c6db942fa1c2aa25">
+                <h2>What About JIT?</h2>
+                <div>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Restricted to a subset of the language</li>
+                        <li class="fragment" data-fragment-index="1">Still no type information in code</li>
+                        <li class="fragment" data-fragment-index="2">3rd party libraries</li>
+                </div>
+                </section>
+                <section class="" data-id="e2a948826469695b05f7d10dc557f53d">
+                <h2>Agenda</h2>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="inactive">Current State of FB backend services</li>
+                        <li class="inactive">Scalability Challenges</li>
+                        <li class="inactive">Where Dynamic Languages Fall Short</li>
+                        <li class="active">Go: A New Kind of Static Language</li>
+                        <li class="inactive">How Go helps us scale</li>
+                        <li class="inactive">Where to GO from here</li>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="6aafded7409b8974576633759ce04384">
+                <h2>Dark Ages?</h2>
+                <div class="fragment" data-fragment-index="0">
+<pre><code data-trim contenteditable>public static void main(String[] argv)</code></pre>
+                </div>
+                <div class="fragment" data-fragment-index="1">
+<pre><code data-trim contenteditable> protected &lt;T extends CWBaseModel, S extends GridPresenter.Display&lt;T&gt;, Q extends GridPresenter&lt;T, S&gt;&gt;
+void doBindGridPresenter(final Q p) {
+  ...
+}</code>        </pre>
+                </div>
+                <br>
+                </section>
+                <section class="" data-id="6aafded7409b8974576633759ce04384">
+                <h2>You Don't have to Give Up Benefits of You Know And Love</h2>
+                <br>
+                </section>
+                <section class="" data-id="286b691e9df7c6129574de69f0d66045">
+                <h2>Batteries Included</h2>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Large standard library</li>
+                        <ul class="fragment" data-fragment-index="0">
+                            <li>net/http</li>
+                            <li>logging</li>
+                            <li>crypto</li>
+                        </ul>
+                        <li class="fragment" data-fragment-index="1">Garbage-collected</li>
+                        <li class="fragment" data-fragment-index="2">Beloved everyday data structures</li>
+                        <ul class="fragment" data-fragment-index="2">
+                            <li>map</li>
+                            <li>slice</li>
+                        </ul>
+                        <li class="fragment" data-fragment-index="3">Built-in concurrency primitives</li>
+                        <ul class="fragment" data-fragment-index="3">
+                            <li>channel</li>
+                            <li>goroutine</li>
+                        </ul>
+                        <ul>
+                        </ul>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="417b1ffea7b279697491237663f9dab5">
+                <h2>Fewer Ceremonies</h2>
+                <h3>Through Type Inferencing</h3>
+                <pre class="fragment" data-fragment-index="0"><code>Foo thing = new Foo();</code></pre>
+                <pre class="fragment" data-fragment-index="1"><code>thing := Foo{}</code></pre>
+                </section>
+                <section class="">
+                    <h2>Small Set of Core Features</h2>
+                    <div>
+                        <br>
+                    </div>
+                    <div>
+                        <ul>
+                            <li class="fragment" data-fragment-index="0">Error Handling</li>
+                            <li class="fragment" data-fragment-index="1">Embedding</li>
+                            <li class="fragment" data-fragment-index="2">Interfaces</li>
+                        </ul>
+                    </ul>
+                </div>
+                </section>
+<section class="" data-id="1d42e7b8b1333fa99b4a2d8b379f2713">
+<h2>Errors Ain't Exceptions</h2>
+<div>
+    <br>
+</div>
+<div>
+    <ul>
+        <li class="fragment" data-fragment-index="0">No try/catch</li>
+        <li class="fragment" data-fragment-index="1">Force you to think about error cases</li>
+        <li class="fragment" data-fragment-index="2">panic/recover for true exceptions</li>
+    </ul>
+</div>
+</section>
+<section class="" data-id="d654f02bf64275aabb1af5872fa104fa">
+<h2>Don't Inherit, Embed</h2>
+<div>
+    <br>
+</div>
+<ul>
+    <li class="fragment" data-fragment-index="0">Observe open-close principle</li>
+    <li class="fragment" data-fragment-index="1">Share data</li>
+    <li class="fragment" data-fragment-index="2">Not changing behaviour</li>
+</ul>
+</section>
+                <section class="" data-id="b599e20d8a9a7a3c6d431fd53dade1a6">
+                <h2>Type-Safe "Duck"</h2>
+                <h3 class="fragment" data-fragment-index="1">Through Interfaces</h3>
+                <div>
+                    <br>
+                </div>
+                <div class="fragment" data-fragment-index="2">
+<pre><code>type Duck interface {
+  Quack()
+}
+</code></pre>
+                </div>
+<pre class="fragment" data-fragment-index="3"><code>type Duckula struct {}
+func (d Duckula) Quack() {...}</code></pre>
+<pre class="fragment" data-fragment-index="4"><code>type Donald struct {}
+func (d Donald) Quack() {...}
+</code></pre>
+<pre class="fragment" data-fragment-index="5"><code>func QuackTogether(ducks []Duck) {
+  for _, duck := range ducks {
+    duck.Quack()
+  }
+}
+<br></code></pre>
+                <br>
+                </section>
+                <section class="" data-id="e2a948826469695b05f7d10dc557f53d">
+                <h2>Agenda</h2>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="inactive">Current State of FB backend services</li>
+                        <li class="inactive">Scalability Challenges</li>
+                        <li class="inactive">Where Dynamic Languages Fall Short</li>
+                        <li class="inactive">Go: A New Kind of Static Language</li>
+                        <li class="active">How Go helps us scale</li>
+                        <li class="inactive">Where to GO from here</li>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="cf98d91631b3329b2e8b91eb8b5d08e6">
+                <h2>Removes bikeshedding</h2>
+                <div>
+                    <br>
+                </div>
+                <blockquote class="fragment" data-fragment-index="0">go fmt</blockquote>
+                <div><span class="fragment" data-fragment-index="1">Coding Convention</span></div>
+                </section>
+                <section class="" data-id="6478f27d3277f330089f193c9b6b6469">
+                <h2>Type-Checking and Code Reasoning</h2>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Explicit Contracts</li>
+                        <li class="fragment" data-fragment-index="1">Reveal bugs early</li>
+                        <li class="fragment" data-fragment-index="2">Maintainability for large code base &amp; dev team</li>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="232c203835a6ee6e0ab75f27f32f05b8">
+                <h3>Simple Deployment</h3>
+                <div>
+                    <br>
+                </div>
+                <ul>
+                    <li class="fragment" data-fragment-index="0">
+                    <span style="text-align: center;text-decoration:line-through">RVM/Rake?</span>
+                    <br>
+                    </li>
+                    <li class="fragment" data-fragment-index="1">
+                    <span style="text-align: center;text-decoration:line-through">Virtualenv, setuptools, pip, distutils?</span>
+                    </li>
+                    <li class="fragment" data-fragment-index="2">Move binary to the server, signal systemd/upstart/supervisord
+                    </li>
+                </ul>
+                </section>
+                <section class="" data-id="5aa2069146094b9678992b868ae06a8e">
+                <h3>Near Metal Performance</h3>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="fragment" data-fragment-index="0">Compiles to platform-specific MC</li>
+                        <ul>
+                            <li class="fragment" data-fragment-index="1" style="text-decoration: line-through">Interpreter process</li>
+                            <li class="fragment" data-fragment-index="2" style="text-decoration: line-through">Shared library loading</li>
+                            <li class="fragment" data-fragment-index="3" style="text-decoration: line-through">Virtual machine</li>
+                        </ul>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="5aa2069146094b9678992b868ae06a8e">
+                <h3>Benchmark Alert</h3>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <img src="images/benchmark.png">
+                </div>
+                <span>Benchmark data from http://www.techempower.com/benchmarks/</span>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        We're Not Alone
+                        ---------------
+
+                        * Google
+                        * [YouTube](https://github.com/youtube/vitess)
+                        * [Docker](http://www.slideshare.net/jpetazzo/docker-and-go-why-did-we-decide-to-write-docker-in-go)
+                        * [SendGrid](http://sendgrid.com/blog/convince-company-go-golang/)
+                        * [Heroku](http://blog.golang.org/go-at-heroku)
+                        * [Disqus](http://blog.disqus.com/post/51155103801/trying-out-this-go-thing)
+                        * [Cloudflare](http://blog.cloudflare.com/go-at-cloudflare)
+                        * [SoundCloud](https://developers.soundcloud.com/blog/go-at-soundcloud)
+                        * [bitly](http://word.bitly.com/post/29550171827/go-go-gadget)
+                        * More [here](https://gist.github.com/ungerik/3731476) and [there](https://code.google.com/p/go-wiki/wiki/GoUsers)
+
+                    </script>
+                </section>
+                <section class="" data-id="e2a948826469695b05f7d10dc557f53d">
+                <h2>Agenda</h2>
+                <div>
+                    <br>
+                </div>
+                <div>
+                    <ul>
+                        <li class="inactive">Current State of FB backend services</li>
+                        <li class="inactive">Scalability Challenges</li>
+                        <li class="inactive">Where Dynamic Languages Fall Short</li>
+                        <li class="inactive">Go: A New Kind of Static Language</li>
+                        <li class="inactive">How Go helps us scale</li>
+                        <li class="active">Where to GO from here</li>
+                    </ul>
+                </div>
+                </section>
+                <section class="" data-id="95298abd6f902a0f39ae9f17360b3588">
+                <h2>Where To GO From Here?</h2>
+                <ul>
+                    <li class="fragment" data-fragment-index="0">Let's be ambitious</li>
+                    <li class="fragment" data-fragment-index="1">Have an open mind about static, compiled languages</li>
+                    <li class="fragment" data-fragment-index="2">Learn, experiment, contribute</li>
+                </ul>
+                </section>
+                <section class="" data-id="95298abd6f902a0f39ae9f17360b3588">
+                Someone in this room once said:
+                <blockquote>
+                    "We're all smart people. Let's figure this out."
+                </blockquote>
+                </section>
+                <section class="" data-id="95298abd6f902a0f39ae9f17360b3588">
+                <h2>Q.E.F.</h2>
+                <div>
+                    <a href="https://github.2ndsiteinc.com/kevin/2014-offsite-slides">https://github.2ndsiteinc.com/kevin/2014-offsite-slides</a>
+                </div>
+                <span class="footer">
+                    Made with <a href="http://lab.hakim.se/reveal-js/">reveal.js</a>
+                </span>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
