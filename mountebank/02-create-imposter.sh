@@ -1,4 +1,6 @@
-set -v
+source fun.sh
+
+step "### Create an imposter (stubbed service)"
 
 curl -XPOST $MB:2525/imposters -d'{
     "port": 5000,
@@ -6,16 +8,10 @@ curl -XPOST $MB:2525/imposters -d'{
 }'
 
 
-echo ""
-echo "### Now, curl the stubbed service"
-read
-
+step "### Now, curl the stubbed service. You will get nothing"
 
 curl -v $MB:5000
-# will get nothing, since we haven't set up any stubs yet
 
-echo ""
-echo "### Curl the imposter will give you the imposter info"
-read
+step "### Curl the imposter will give you the imposter info"
 
 curl $MB:2525/imposters/5000

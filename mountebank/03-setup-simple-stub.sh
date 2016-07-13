@@ -1,7 +1,6 @@
-set -v
+source fun.sh
 
-echo "### Setup a simple stub: returns everyone's favourite http status code always"
-read
+step "### Setup a simple stub: returns everyone's favourite http status code always"
 
 curl -XPOST $MB:2525/imposters -d'{
     "port": 5001,
@@ -21,14 +20,10 @@ curl -XPOST $MB:2525/imposters -d'{
     }]
 }'
 
-echo ""
-echo "### Make request to the stub service"
-read
+step "### Make request to the stub service"
 
 curl -v $MB:5001
 
-echo ""
-echo "### Another request will always return you the same result"
-read
+step "### Another request will always return you the same result"
 
 curl -v $MB:5001/abc
