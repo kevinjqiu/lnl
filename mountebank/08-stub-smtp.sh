@@ -9,7 +9,8 @@ curl -XPOST $MB:2525/imposters -d'{
 
 step "### Let's send a fake email to myself"
 
-echo "hello from mountebank" | mail -S 'smtp=smtp://172.17.0.5:5006' -s 'Hi' kevin.qiu@points.com
+echo "hello from mountebank" | mailx -S smtp=$MB:5006 -s 'Hi' kevin.qiu@points.com
+#docker run -i --net=host snail sh -c "echo 'hello from mountebank' | mail -S \"smtp=smtp://$MB:5006\" -s 'Hi' kevin.qiu@points.com"
 
 step "### We can retrieve the SMTP request"
 
