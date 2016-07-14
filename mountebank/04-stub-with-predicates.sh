@@ -10,7 +10,7 @@ curl -XPOST $MB:2525/imposters -d'{
             {
                 "equals": {
                     "method": "POST",
-                    "path": "/lp"
+                    "path": "/lps"
                 }
             }
         ],
@@ -31,7 +31,7 @@ curl -XPOST $MB:2525/imposters -d'{
             {
                 "equals": {
                     "method": "GET",
-                    "path": "/lp/LPID"
+                    "path": "/lps/LPID"
                 }
             }
         ],
@@ -48,3 +48,9 @@ curl -XPOST $MB:2525/imposters -d'{
         ]
     }]
 }'
+
+step "Create an LP by sending a POST request"
+curl -XPOST $MB:5002/lps
+
+step "Get the \"created\" LP"
+curl $MB:5002/lps/LPID
