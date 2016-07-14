@@ -75,9 +75,9 @@ curl -XPOST $MB:2525/imposters -d'{
 
 step "Send POST request without authorization header..."
 
-curl -XPOST $MB:5003/lps
+curl -v -XPOST $MB:5003/lps
 
 
 step "Send POST request with authorization header..."
 
-curl -XPOST -u admin:password $MB:5003/lps
+curl -v -XPOST -u admin:password $MB:5003/lps
